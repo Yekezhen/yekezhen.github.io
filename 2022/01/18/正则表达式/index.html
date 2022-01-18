@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>正则表达式 - 欢迎来到我的个人博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。 正则表达式的底层实现12345String content &#x3D;&quot;1998年12月8日，第二代Java平台的企业版J2EE发布。1999年&quot;+      &quot;6月，Sun公司发布了第二代Java平台（简称为Java2）的3个版本：J2ME（Java2 Micro Edition，Java2平&quot; +">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="欢迎来到我的个人博客">
+<meta property="og:description" content="正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。 正则表达式的底层实现12345String content &#x3D;&quot;1998年12月8日，第二代Java平台的企业版J2EE发布。1999年&quot;+      &quot;6月，Sun公司发布了第二代Java平台（简称为Java2）的3个版本：J2ME（Java2 Micro Edition，Java2平&quot; +">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%B5%8B%E8%AF%951.png">
+<meta property="og:image" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%8E%9F%E7%90%861.png">
+<meta property="og:image" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%B5%8B%E8%AF%952.png">
+<meta property="og:image" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%B8%B8%E7%94%A8.png">
+<meta property="og:image" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1446.png">
+<meta property="article:published_time" content="2022-01-18T04:42:51.000Z">
+<meta property="article:modified_time" content="2022-01-18T12:45:40.792Z">
+<meta property="article:author" content="Yekezhen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%B5%8B%E8%AF%951.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1642510010926">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1642510010926">
+    <link rel="stylesheet" href="/css/style.css?v=1642510010926">
+     
+    
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Yekezhen" class="mdui-btn mdui-btn-icon"><img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4208654756,4105942209&amp;fm=26&amp;gp=0.jpg" alt="Yekezhen"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Yekezhen">
+            <img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4208654756,4105942209&amp;fm=26&amp;gp=0.jpg" alt="Yekezhen" alt="Yekezhen">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>5</div>
+        <div><span>标签</span>0</div>
+        <div><span>分类</span>4</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://github.com/Yekezhen/Metaverse" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1587311092" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数构算法/Leetcode/">Leetcode</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数构算法/Leetcode/oj/">oj</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数构算法/">数构算法</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Yekezhen
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <strong>交流 QQ 1587311092 WX qz1587311092 
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="正则表达式" class="lazyload">
+              <h1>正则表达式</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月18日</a>
+</div>
+
+      
+
+      <p>正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。</p>
+<h2 id="正则表达式的底层实现"><a href="#正则表达式的底层实现" class="headerlink" title="正则表达式的底层实现"></a>正则表达式的底层实现</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">String content</span> =<span class="string">&quot;1998年12月8日，第二代Java平台的企业版J2EE发布。1999年&quot;</span>+</span><br><span class="line">      <span class="string">&quot;6月，Sun公司发布了第二代Java平台（简称为Java2）的3个版本：J2ME（Java2 Micro Edition，Java2平&quot;</span> +</span><br><span class="line">             <span class="string">&quot;台的微型版），应用于移动、无线及有限资源的环境；J2SE（Java 2 Standard Edition，Java 2平台&quot;</span> +</span><br><span class="line">             <span class="string">&quot;的标准版），应用于桌面环境；J2EE（Java 2Enterprise Edition，Java 2平台的企业版），应用于基&quot;</span> +</span><br><span class="line">             <span class="string">&quot;于Java的应用服务器。Java 2平台的发布，是Java发展过程中最重要的一个里程碑，标志着Java的应用开始普及。&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>目标：<code>匹配所有四个数字</code></p>
+<li style="margin-left: 40px;font-size: 15px">\\d 表示任意一个数字 </li>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> regStr <span class="operator">=</span><span class="string">&quot;<span class="subst">\\</span>d<span class="subst">\\</span>d<span class="subst">\\</span>d<span class="subst">\\</span>d&quot;</span> <span class="comment">//四个数字</span></span><br></pre></td></tr></table></figure>
+
+
+<li style="margin-left: 40px;font-size: 15px">创建模式对象[即正则表达式对象] </li>
+
+ <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Pattern</span> pattern = <span class="built_in">Pattern</span>.compile(regStr);</span><br></pre></td></tr></table></figure>
+
+<li style="margin-left: 40px;font-size: 15px">创建匹配器 </li>
+
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Matcher matcher = pattern<span class="selector-class">.matcher</span>(<span class="attribute">content</span>);</span><br></pre></td></tr></table></figure>
+
+
+<li style="margin-left: 40px;font-size: 15px">开始匹配</li>
+
+ <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">while</span>(matcher.<span class="keyword">find</span>())&#123;</span><br><span class="line">   System.out.<span class="keyword">println</span>(<span class="string">&quot;找到: &quot;</span>+ matcher.<span class="keyword">group</span>(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<li style="margin-left: 40px;font-size: 15px">效果图</li>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="%E6%B5%8B%E8%AF%951.png" alt="测试1" class="lazyload"></p>
+<h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><li style="margin-left: 40px;font-size: 15px">matcher.find()的作用</li>
+
+<ol>
+<li>根据指定的规则，定位满足条件的子字符串(比如1998)</li>
+<li>找到后将，子字符串的索引记下，记下初始的位置到matcher对象的属性中<br>即是 （数字1）的初始位置0 记入到 groups[0]=0; （数字8）的结束位置4 记入到 groups[1]=4; 并计入 结束位置 ‘4’ oldlast为下一次扫描做开始位置。  </li>
+</ol>
+<li style="margin-left: 40px;font-size: 15px">matcher.group(0)的作用</li>
+
+<p>group的源代码</p>
+ <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  return <span class="constructor">GetSubSequence(<span class="params">groups</span>[<span class="params">group</span>+2],<span class="params">groups</span>[<span class="params">group</span><span class="operator">*</span>2+1])</span>.<span class="keyword">to</span><span class="constructor">String()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>主函数内调用groups(0)，实际上在调用matcher.group(0)时，是将gourp[0]到gourp[1] [0，4）的位置进行subString（）</li>
+<li>考虑分组情况，如 (19)(98),同理group[0]=0，先索引总的长度计入group[1]=4；<br>第一组 (1 9)的索引计入到 group[2]=0,group[3]=2;<br>第二组 (9 8)的索引计入到 groups[4]=2,groups[5]=4;</li>
+</ol>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="%E5%8E%9F%E7%90%861.png" alt="原理1" class="lazyload"><br><img data-fancybox="gallery" data-sizes="auto" data-src="%E6%B5%8B%E8%AF%952.png" alt="测试2" class="lazyload"></p>
+<p>一些常用的符号</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="%E5%B8%B8%E7%94%A8.png" alt="常用" class="lazyload"></p>
+<p>一道简单的应用</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="1446.png" alt="题目" class="lazyload"></p>
+<p>AC代码</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Main &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> content = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNext()) &#123;</span><br><span class="line">            content = scanner.next();</span><br><span class="line">            <span class="built_in">int</span> <span class="built_in">year</span> = <span class="number">0</span>, <span class="built_in">month</span> = <span class="number">0</span>, <span class="built_in">day</span> = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">String</span> regStr = <span class="string">&quot;(\\d&#123;4&#125;)-(\\d&#123;2&#125;)-(\\d&#123;2&#125;)&quot;</span>;</span><br><span class="line">            Pattern pattern = Pattern.compile(regStr);</span><br><span class="line">            Matcher matcher = pattern.matcher(content);</span><br><span class="line">            <span class="built_in">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">while</span> (matcher.find()) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="built_in">year</span> = Integer.parseInt(matcher.group(<span class="number">1</span>));</span><br><span class="line">                <span class="built_in">month</span> = Integer.parseInt(matcher.group(<span class="number">2</span>));</span><br><span class="line">                <span class="built_in">day</span> = Integer.parseInt(matcher.group(<span class="number">3</span>));</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">month</span> == <span class="number">1</span>||<span class="built_in">month</span>==<span class="number">3</span>||<span class="built_in">month</span>==<span class="number">5</span>||<span class="built_in">month</span>==<span class="number">7</span>||<span class="built_in">month</span>==<span class="number">8</span>||<span class="built_in">month</span>==<span class="number">10</span>||<span class="built_in">month</span>==<span class="number">12</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">day</span> &gt;= <span class="number">1</span> &amp;&amp; <span class="built_in">day</span> &lt;= <span class="number">31</span>) &#123;</span><br><span class="line">                        flag = <span class="keyword">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">month</span> == <span class="number">2</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (isLeepyear(<span class="built_in">year</span>)) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (<span class="built_in">day</span> &gt;= <span class="number">1</span> &amp;&amp; <span class="built_in">day</span> &lt;= <span class="number">29</span>) &#123;</span><br><span class="line">                                flag = <span class="keyword">true</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span>&#123;</span><br><span class="line">                            <span class="keyword">if</span>(<span class="built_in">day</span>&gt;=<span class="number">1</span>&amp;&amp;<span class="built_in">day</span>&lt;=<span class="number">28</span>)</span><br><span class="line">                                flag=<span class="keyword">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">month</span>==<span class="number">4</span>||<span class="built_in">month</span>==<span class="number">6</span>||<span class="built_in">month</span>==<span class="number">9</span>||<span class="built_in">month</span>==<span class="number">11</span>)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(<span class="built_in">day</span>&gt;=<span class="number">1</span>&amp;&amp;<span class="built_in">day</span>&lt;=<span class="number">30</span>)&#123;</span><br><span class="line">                            flag=<span class="keyword">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                        flag=<span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                    System.out.<span class="built_in">println</span>(<span class="string">&quot;yes&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    System.out.<span class="built_in">println</span>(<span class="string">&quot;no&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">boolean</span> isLeepyear(<span class="built_in">int</span> <span class="built_in">year</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">year</span> % <span class="number">4</span>== <span class="number">0</span> &amp;&amp; <span class="built_in">year</span>%<span class="number">100</span>!=<span class="number">0</span>||<span class="built_in">year</span>%<span class="number">400</span>==<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Yekezhen<br>
+        <strong>本文链接：</strong><a href="http://example.com/2022/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;01&#x2F;18&#x2F;%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;01&#x2F;18&#x2F;%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div id="gitment"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'Yekezhen', // 你的 GitHub ID
+    repo: 'Metaverse', // 存储评论的 repo
+    oauth: {
+        client_id: 'aa428bf20637849734d7', // 你的 client ID
+        client_secret: '426620a6ef18c096b7e3315ea8d38bf9e2a2e89e' // 你的 client secret
+    },
+})
+gitment.render('gitment')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1642510010928"></script>
+
+
+	<script async src="/js/search.js?v=1642510010929"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
