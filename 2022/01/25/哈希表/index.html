@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>哈希表 - 欢迎来到我的个人博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。  哈希表是 通过对象数组+链表实现的，比对象数组稍微麻烦一些     底层代码  123456789101112131415161718192021222324252">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表">
+<meta property="og:url" content="http://example.com/2022/01/25/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
+<meta property="og:site_name" content="欢迎来到我的个人博客">
+<meta property="og:description" content="散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。  哈希表是 通过对象数组+链表实现的，比对象数组稍微麻烦一些     底层代码  123456789101112131415161718192021222324252">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/01/25/%E5%93%88%E5%B8%8C%E8%A1%A8/hash.png">
+<meta property="og:image" content="http://example.com/2022/01/25/%E5%93%88%E5%B8%8C%E8%A1%A8/%E6%95%88%E6%9E%9C%E5%9B%BE.png">
+<meta property="article:published_time" content="2022-01-25T15:34:54.000Z">
+<meta property="article:modified_time" content="2022-01-25T15:42:20.021Z">
+<meta property="article:author" content="Yekezhen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/01/25/%E5%93%88%E5%B8%8C%E8%A1%A8/hash.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1643125448326">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1643125448326">
+    <link rel="stylesheet" href="/css/style.css?v=1643125448326">
+     
+    
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Yekezhen" class="mdui-btn mdui-btn-icon"><img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4208654756,4105942209&amp;fm=26&amp;gp=0.jpg" alt="Yekezhen"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Yekezhen">
+            <img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4208654756,4105942209&amp;fm=26&amp;gp=0.jpg" alt="Yekezhen" alt="Yekezhen">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>8</div>
+        <div><span>标签</span>0</div>
+        <div><span>分类</span>4</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://github.com/Yekezhen/Metaverse" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1587311092" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数构算法/Leetcode/">Leetcode</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数构算法/Leetcode/oj/">oj</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数构算法/">数构算法</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Yekezhen
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <strong>交流 QQ 1587311092 WX qz1587311092 
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="哈希表" class="lazyload">
+              <h1>哈希表</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月25日</a>
+</div>
+
+      
+
+      <p><code>散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。 </code></p>
+<p>哈希表是 通过对象数组+链表实现的，比对象数组稍微麻烦一些</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="hash.png" alt="hash" class="lazyload"></p>
+<p> <img data-fancybox="gallery" data-sizes="auto" data-src="%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt="效果图" class="lazyload"></p>
+<p> 底层代码</p>
+ <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> HashTableTest &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args)&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        HashTab hashTab= <span class="keyword">new</span> HashTab(<span class="number">7</span>);</span><br><span class="line">        String key=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;[list],输出哈希表&quot;</span>);</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;[add],添加数据&quot;</span>);</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;[exit],退出&quot;</span>);</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;[find],查找数据&quot;</span>);</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;[del],删除数据&quot;</span>);</span><br><span class="line">            key=scanner.<span class="keyword">next</span>();</span><br><span class="line">            <span class="keyword">switch</span> (key)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;list&quot;</span>:</span><br><span class="line">                    hashTab.list();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;add&quot;</span>:</span><br><span class="line">                    System.out.<span class="keyword">println</span>(<span class="string">&quot;请输入id&quot;</span>);</span><br><span class="line">                    <span class="keyword">int</span> num=scanner.nextInt();</span><br><span class="line">                    System.out.<span class="keyword">println</span>(<span class="string">&quot;请输入姓名&quot;</span>);</span><br><span class="line">                    String name=scanner.<span class="keyword">next</span>();</span><br><span class="line">                    Emp emp = <span class="keyword">new</span> Emp(num,name);</span><br><span class="line">                    hashTab.add(emp);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">                    scanner.close();</span><br><span class="line">                    System.exit(<span class="number">0</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;del&quot;</span>:</span><br><span class="line">                    System.out.<span class="keyword">println</span>(<span class="string">&quot;请输入ID&quot;</span>);</span><br><span class="line">                    num=scanner.nextInt();</span><br><span class="line">                    hashTab.Del(num);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;find&quot;</span>:</span><br><span class="line">                    System.out.<span class="keyword">println</span>(<span class="string">&quot;请输入ID&quot;</span>);</span><br><span class="line">                    num=scanner.nextInt();</span><br><span class="line">                    hashTab.<span class="keyword">Find</span>(num);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Emp&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> Emp <span class="keyword">next</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Emp(<span class="keyword">int</span> id, String name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> EmpLinkedList&#123;</span><br><span class="line">    <span class="keyword">private</span> Emp head;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> add(Emp node)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span>)&#123;</span><br><span class="line">            head=node;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node.id&lt; head.id)&#123;</span><br><span class="line">            node.<span class="keyword">next</span>=head;</span><br><span class="line">            head=node;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Emp cur=head,pre=<span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">while</span>(cur!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(cur.id&gt;node.id)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                pre=cur;</span><br><span class="line">                cur=cur.<span class="keyword">next</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            node.<span class="keyword">next</span>=cur;</span><br><span class="line">            pre.<span class="keyword">next</span>=node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> list(<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;当前&quot;</span>+id+<span class="string">&quot;号链表为空&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;当前&quot;</span>+id+<span class="string">&quot;号链表的信息为  &quot;</span>);</span><br><span class="line">            Emp cur=head;</span><br><span class="line">            <span class="keyword">while</span>(cur!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                System.out.printf(<span class="string">&quot;=&gt; id = %d,name = %s  &quot;</span>,cur.id,cur.name);</span><br><span class="line">                cur=cur.<span class="keyword">next</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.<span class="keyword">println</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Emp Search(<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;链表为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Emp cur=head;</span><br><span class="line">        <span class="keyword">while</span>(cur!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.id==id)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cur=cur.<span class="keyword">next</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cur==<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;链表为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Emp Del(<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;删除失败链表为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(head.<span class="keyword">next</span>==<span class="keyword">null</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span> head=<span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Emp cur=head;</span><br><span class="line">       <span class="keyword">while</span>(cur.<span class="keyword">next</span>!=<span class="keyword">null</span>)&#123;</span><br><span class="line">           <span class="keyword">if</span>(cur.<span class="keyword">next</span>.id==id)&#123;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           cur=cur.<span class="keyword">next</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       cur.<span class="keyword">next</span>=cur.<span class="keyword">next</span>.<span class="keyword">next</span>;</span><br><span class="line">       <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> HashTab&#123;</span><br><span class="line">    <span class="keyword">private</span> EmpLinkedList[] empLinkedListArray;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> <span class="keyword">size</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> HashTab(<span class="keyword">int</span> <span class="keyword">size</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.<span class="keyword">size</span>=<span class="keyword">size</span>;</span><br><span class="line">        empLinkedListArray = <span class="keyword">new</span> EmpLinkedList[<span class="keyword">size</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">size</span>;i++)&#123;</span><br><span class="line">            empLinkedListArray[i]= <span class="keyword">new</span> EmpLinkedList();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> add(Emp node)&#123;</span><br><span class="line">        <span class="keyword">int</span> empLinkedlistNo = GetQueue(node.id);</span><br><span class="line">        empLinkedListArray[empLinkedlistNo].add(node);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> GetQueue(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        <span class="keyword">return</span> num%<span class="keyword">size</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> list()&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">size</span>;i++)&#123;</span><br><span class="line">            empLinkedListArray[i].list(i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">Find</span>(<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">int</span> num=GetQueue(id);</span><br><span class="line">       Emp node =empLinkedListArray[num].Search(id);</span><br><span class="line">       <span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">           System.out.printf(<span class="string">&quot;数据%d在第%d条中\n&quot;</span>,node.id,num+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">           System.out.<span class="keyword">println</span>(<span class="string">&quot;未找到数据&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> Del(<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">int</span> num=GetQueue(id);</span><br><span class="line">       Emp node= empLinkedListArray[num].Del(id);</span><br><span class="line">        <span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;数据%d在第%d条中已经删除\n&quot;</span>,node.id,num+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.<span class="keyword">println</span>(<span class="string">&quot;未找到数据||删除成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Yekezhen<br>
+        <strong>本文链接：</strong><a href="http://example.com/2022/01/25/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;01&#x2F;25&#x2F;%E5%93%88%E5%B8%8C%E8%A1%A8&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;01&#x2F;25&#x2F;%E5%93%88%E5%B8%8C%E8%A1%A8&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%95%B0%E6%9E%84%E7%AE%97%E6%B3%95/">数构算法</a>
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div id="gitment"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'Yekezhen', // 你的 GitHub ID
+    repo: 'Metaverse', // 存储评论的 repo
+    oauth: {
+        client_id: 'aa428bf20637849734d7', // 你的 client ID
+        client_secret: '426620a6ef18c096b7e3315ea8d38bf9e2a2e89e' // 你的 client secret
+    },
+})
+gitment.render('gitment')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1643125448331"></script>
+
+
+	<script async src="/js/search.js?v=1643125448331"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
